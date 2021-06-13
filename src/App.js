@@ -17,14 +17,14 @@ Amplify.configure(awsconfig);
 function App() {
   return (
       <Router>
-        <Link exact to ="/Home">
+        <Link exact to ="/">
           Home
         </Link>
         <NavLink exact to ="/Register">
           Register Covid 
         </NavLink>
         <Switch>
-          <Route exact path ="/Home" component = {Home} />
+          <Route exact path ="/" component = {Home} />
           <Route exact path ="/Register" component = {Register} />
         </Switch>
       </Router>
