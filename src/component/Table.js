@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
-
-// import query
 import { listPatients } from "../graphql/queries";
+
 const Table = props => {
   const [usersList, setUsersList] = useState([]);
   useEffect(() => {
