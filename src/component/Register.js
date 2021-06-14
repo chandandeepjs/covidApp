@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import classes from "./Register.module.css";
 import moment from "moment";
-import {API,graphqlOperation} from 'aws-amplify';
-import { createPatient as CreatePatient } from '../graphql/mutations'
+import { API, graphqlOperation } from "aws-amplify";
+import { createPatient as CreatePatient } from "../graphql/mutations";
 
 const Register = () => {
   const [patientName, setPatientName] = useState("");
@@ -12,7 +12,7 @@ const Register = () => {
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emergencyContact, setEmergencyContact] = useState("");
- 
+
   const PatientNameHandler = event => {
     setPatientName(event.target.value);
   };
@@ -37,7 +37,6 @@ const Register = () => {
 
   const addPatientHandler = async event => {
     event.preventDefault();
-    
 
     if (
       patientName.trim().length === 0 ||
@@ -50,10 +49,10 @@ const Register = () => {
     ) {
       return console.log("Some of field value missing");
     }
-      
+
     const patient = {
       name: patientName,
-      dob:moment().unix(dob),
+      dob: moment().unix(dob),
       status: patientStatus,
       country: country,
       address: address,
@@ -62,13 +61,12 @@ const Register = () => {
     };
     console.log("[addPatientHandler]", patient);
     try {
-      console.log(patient)
-      await API.graphql(graphqlOperation(CreatePatient,{ input: patient }))
-      console.log('item created!')
+      await API.graphql(graphqlOperation(CreatePatient, { input: patient }));
+      console.log("item created!");
     } catch (err) {
-      console.log('error creating patient...', err)
+      console.log("error creating patient...", err);
     }
-    //console.log(enteredUserName, enteredAge);
+
     setPatientName("");
     setPatientStatus("");
     setDob("");
@@ -85,6 +83,7 @@ const Register = () => {
           id="Name"
           type="text"
           value={patientName}
+          required
           onChange={PatientNameHandler}
         />
         <label htmlFor=" Patient Status"> Patient Status </label>
@@ -93,6 +92,7 @@ const Register = () => {
           type="text"
           list="Status"
           value={patientStatus}
+          required
           onChange={PatientStatusHandler}
         />
         <datalist id="Status">
@@ -108,32 +108,36 @@ const Register = () => {
           type="text"
           list="country"
           value={country}
+          required
           onChange={CountryHandler}
         />
-         <datalist id="country">
+        <datalist id="country">
           <option>India</option>
           <option>US</option>
           <option>UK</option>
         </datalist>
         <label htmlFor="Address">Address</label>
-        <input  
+        <input
           id="Address"
           type="text"
           value={address}
+          required
           onChange={AddressHandler}
         />
         <label htmlFor="Phone Number">Phone Number</label>
         <input
           id="Phone Number"
-          type="number"
+          type="tel"
           value={phoneNumber}
+          required
           onChange={PhoneNumberHandler}
         />
         <label htmlFor="Emergency Contact">Emergency Contact</label>
         <input
           id="Emergency Contact"
-          type="number"
+          type="tel"
           value={emergencyContact}
+          required
           onChange={EmergencyContactHandler}
         />
         <button type="submit"> Submit </button>
