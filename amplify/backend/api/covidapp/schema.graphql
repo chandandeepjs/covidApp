@@ -1,0 +1,10 @@
+type Patient @model {
+  id: ID!
+  name: String!
+  dob:Int!
+  status:String!
+  country:String!
+  address:String!
+  phoneNumber:String!
+  emergencyContact:String!
+}

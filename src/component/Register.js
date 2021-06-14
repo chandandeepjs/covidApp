@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import classes from "./Register.module.css";
+import moment from "moment";
+import {API,graphqlOperation} from 'aws-amplify';
+import { createPatient as CreatePatient } from '../graphql/mutations'
 
 const Register = () => {
   const [patientName, setPatientName] = useState("");
@@ -47,23 +50,24 @@ const Register = () => {
     ) {
       return console.log("Some of field value missing");
     }
-    const user = {
+      
+    const patient = {
       name: patientName,
-      dob: dob, //integer
+      dob:moment().unix(dob),
       status: patientStatus,
       country: country,
       address: address,
-      phoneNumber: phoneNumber,
-      emergencyContact: emergencyContact,
+      phoneNumber: phoneNumber.toString(),
+      emergencyContact: emergencyContact.toString(),
     };
-    console.log("[addPatientHandler]", user);
-    // try {
-    //   console.log(user)
-    //   await API.graphql(graphqlOperation(CreateUser,{ input: user }))
-    //   console.log('item created!')
-    // } catch (err) {
-    //   console.log('error creating user...', err)
-    // }
+    console.log("[addPatientHandler]", patient);
+    try {
+      console.log(patient)
+      await API.graphql(graphqlOperation(CreatePatient,{ input: patient }))
+      console.log('item created!')
+    } catch (err) {
+      console.log('error creating patient...', err)
+    }
     //console.log(enteredUserName, enteredAge);
     setPatientName("");
     setPatientStatus("");
