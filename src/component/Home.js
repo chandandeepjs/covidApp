@@ -1,6 +1,5 @@
 import Table from "./Table";
 import {AmplifySignOut} from '@aws-amplify/ui-react';
-
 import "../App.css";
 const Home = () => {
   return (
