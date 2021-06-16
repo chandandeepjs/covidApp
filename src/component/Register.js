@@ -86,36 +86,26 @@ const Register = () => {
           required
           onChange={PatientNameHandler}
         />
-        <label htmlFor=" Patient Status"> Patient Status </label>
-        <input
+        <label htmlFor="Patient Status">Patient Status:</label>
+        <select
+          name="Patient Status"
           id="Patient Status"
-          type="text"
-          list="Status"
-          value={patientStatus}
-          required
-          onChange={PatientStatusHandler}
-        />
-        <datalist id="Status">
+          onChange={PatientStatusHandler} required
+        >
           <option>inActive</option>
           <option>active</option>
           <option>death</option>
-        </datalist>
+        </select>
+
         <label htmlFor="DoB">DoB</label>
         <input id="DoB" type="date" value={dob} onChange={DoBHandler} />
-        <label htmlFor="Country">Country</label>
-        <input
-          id="Country"
-          type="text"
-          list="country"
-          value={country}
-          required
-          onChange={CountryHandler}
-        />
-        <datalist id="country">
+        <label htmlFor="Country">Country:</label>
+        <select name="Country" id="Country"  onChange={CountryHandler} required>
           <option>India</option>
           <option>US</option>
           <option>UK</option>
-        </datalist>
+        </select>
+
         <label htmlFor="Address">Address</label>
         <input
           id="Address"
@@ -126,23 +116,28 @@ const Register = () => {
         />
         <label htmlFor="Phone Number">Phone Number</label>
         <input
-          id="Phone Number"
           type="tel"
+          id="Phone Number"
+          name="Phone Number"
           value={phoneNumber}
-          required
           onChange={PhoneNumberHandler}
+          pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+          required
         />
         <label htmlFor="Emergency Contact">Emergency Contact</label>
         <input
-          id="Emergency Contact"
           type="tel"
+          id="Emergency Contact"
+          name="Emergency Contact"
           value={emergencyContact}
-          required
           onChange={EmergencyContactHandler}
+          pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+          required
         />
         <button type="submit"> Submit </button>
       </form>
     </div>
   );
 };
+console.log(Register)
 export default Register;
