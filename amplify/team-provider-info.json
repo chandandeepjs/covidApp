@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "covidapp105aae35": {}
+      },
+      "function": {
+        "covidfunction": {
+          "deploymentBucketName": "amplify-covidapp-dev-140854-deployment",
+          "s3Key": "amplify-builds/covidfunction-566256384a6373654b39-build.zip"
+        }
       }
     }
   }

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "storage": {
+      "dynmocovid": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "Patient:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

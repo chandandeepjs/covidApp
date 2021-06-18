@@ -1,0 +1,5 @@
+{
+    "tableName": "dynmocovid",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}

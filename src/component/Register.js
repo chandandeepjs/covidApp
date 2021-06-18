@@ -92,15 +92,17 @@ const Register = () => {
           id="Patient Status"
           onChange={PatientStatusHandler} required
         >
+          <option value=""></option>
           <option>inActive</option>
           <option>active</option>
           <option>death</option>
         </select>
 
         <label htmlFor="DoB">DoB</label>
-        <input id="DoB" type="date" value={dob} onChange={DoBHandler} />
+        <input id="DoB" type="date" value={dob} onChange={DoBHandler}required />
         <label htmlFor="Country">Country:</label>
-        <select name="Country" id="Country"  onChange={CountryHandler} required>
+        <select name="Country" id="Country"  onChange={CountryHandler}required >
+        <option value=""></option>
           <option>India</option>
           <option>US</option>
           <option>UK</option>
@@ -139,5 +141,5 @@ const Register = () => {
     </div>
   );
 };
-console.log(Register)
+//console.log(Register)
 export default Register;

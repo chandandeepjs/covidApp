@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { API, graphqlOperation } from "aws-amplify";
-import { listPatients } from "../graphql/queries";
+import { API} from "aws-amplify";
+// import { listPatients } from "../graphql/queries";
 
 const Table = props => {
   const [usersList, setUsersList] = useState([]);
@@ -9,8 +9,10 @@ const Table = props => {
   }, []);
   async function getData() {
     try {
-      const patientsData = await API.graphql(graphqlOperation(listPatients));
-      const arry = patientsData.data.listPatients.items;
+      //const patientsData = await API.graphql(graphqlOperation(listPatients));
+      const apiData = await API.get("covidapi","/items")
+      console.log("[apiData]",apiData)
+      const arry = apiData.success.Items;
 
       let InDeath = [];
       let InInactive = [];
