@@ -5,6 +5,7 @@ import { API, graphqlOperation } from "aws-amplify";
 import { createPatient as CreatePatient } from "../graphql/mutations";
 
 const Register = () => {
+  
   const [patientName, setPatientName] = useState("");
   const [patientStatus, setPatientStatus] = useState("");
   const [dob, setDob] = useState("");
@@ -75,6 +76,7 @@ const Register = () => {
     setPhoneNumber("");
     setEmergencyContact("");
   };
+
   return (
     <div className={classes.input}>
       <form onSubmit={addPatientHandler}>
@@ -90,19 +92,26 @@ const Register = () => {
         <select
           name="Patient Status"
           id="Patient Status"
-          onChange={PatientStatusHandler} required
+          onChange={PatientStatusHandler}
+          required
         >
-          <option value=""></option>
+          <option value="" />
           <option>inActive</option>
           <option>active</option>
           <option>death</option>
         </select>
 
         <label htmlFor="DoB">DoB</label>
-        <input id="DoB" type="date" value={dob} onChange={DoBHandler}required />
+        <input
+          id="DoB"
+          type="date"
+          value={dob}
+          onChange={DoBHandler}
+          required
+        />
         <label htmlFor="Country">Country:</label>
-        <select name="Country" id="Country"  onChange={CountryHandler}required >
-        <option value=""></option>
+        <select name="Country" id="Country" onChange={CountryHandler} required>
+          <option value="" />
           <option>India</option>
           <option>US</option>
           <option>UK</option>
@@ -124,6 +133,7 @@ const Register = () => {
           value={phoneNumber}
           onChange={PhoneNumberHandler}
           pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+          title="Phone Number must contain ten digits"
           required
         />
         <label htmlFor="Emergency Contact">Emergency Contact</label>
@@ -134,6 +144,7 @@ const Register = () => {
           value={emergencyContact}
           onChange={EmergencyContactHandler}
           pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+          title="Emergency Contact must contain ten digits"
           required
         />
         <button type="submit"> Submit </button>

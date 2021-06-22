@@ -18,7 +18,7 @@
       "function": {
         "covidfunction": {
           "deploymentBucketName": "amplify-covidapp-dev-140854-deployment",
-          "s3Key": "amplify-builds/covidfunction-566256384a6373654b39-build.zip"
+          "s3Key": "amplify-builds/covidfunction-61796b6a334d434e4a30-build.zip"
         }
       }
     }
